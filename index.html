@@ -474,7 +474,7 @@ angular.module('myTemplates', [])
     </section>
   </div>
 </div>
-
+<audio id="sound-pipe" src="audio/pipe.wav"></audio>
 <script src="lib/js/head.min.js"></script>
 <script src="js/reveal.min.js"></script>
 
@@ -502,6 +502,11 @@ angular.module('myTemplates', [])
     ]
   });
 
+  Reveal.addEventListener( 'slidechanged', function( event ) {
+    if (event.indexh === 3) {
+      document.getElementById("sound-pipe").play();
+    }
+  });
 </script>
 
 </body>
