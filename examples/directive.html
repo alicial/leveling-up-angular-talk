@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="css/mario.css" id="theme">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="js/angular.min.js"></script>
+  <script src="js/mario.js"></script>
+</head>
+<body ng-app="marioApp">
+<div ng-controller="gameCtrl" class="game">
+  <h4>  Mode: <input ng-model="mario.mode" type="text"></h4>
+<h4><span ng-show="enemies.length">Enemies left = {{enemies.length}}</span><span ng-hide="enemies.length">You are awesome!!</span></h4>
+
+  <enemy ng-repeat="enemy in enemies" enemy-type="{{enemy.type}}" lives="enemy.lives" on-destroy="destroy($index)" position="{{($index+1)/enemies.length*80}}"></enemy>
+
+  <mario fire-mode="{{mario.mode}}"></mario>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+html {
+    height: 100%;
+    font-family: "Helvetica Neue", sans-serif;
+}
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    min-height: 100%;
+    background: lightblue url(../images/1-1.png) no-repeat scroll 0 bottom;
+    background-size: auto 864px;
+}
+h4 {
+    padding: 0;
+    margin: 0;
+}
+.game {
+    width: 100%;
+    min-height: 300px;
+}
+.goomba {
+    display: block;
+    position: absolute;
+    background-image: url(../images/goomba.gif);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 64px;
+    height: 64px;
+    bottom: 64px;
+}
+.bowser {
+    display: block;
+    position: absolute;
+    background-image: url(../images/bowser.gif);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 128px;
+    height: 120px;
+    bottom: 64px;
+}
+.mario {
+    display: block;
+    position: absolute;
+    background-image: url(../images/mario-small.png);
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    height: 64px;
+    width: 48px;
+    left: 5%;
+    bottom: 64px;
+}
+.mario.fire-mode {
+    background-image: url(../images/mario-fire.png);
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    height: 128px;
+    width: 64px;
+}
+.fire-ball {
+    display: block;
+    position: absolute;
+    background-image: url(../images/fireball.gif);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 32px;
+}

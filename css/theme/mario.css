@@ -1,0 +1,56 @@
+.reveal section img.image {
+  border: none;
+  margin: 0;
+  box-shadow: none;
+  background: none; }
+.reveal .dark h1, .reveal .dark h2, .reveal .dark h3, .reveal .dark h4, .reveal .dark h5, .reveal .dark h6, .reveal .dark p, .reveal .dark div, .reveal .dark ul, .reveal .dark li {
+  color: #FFF; }
+.reveal blockquote {
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0 1.5em 0.5em;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+  width: auto;
+  text-align: left; }
+  .reveal blockquote:before {
+    color: #ccc;
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-left: -0.4em;
+    vertical-align: -0.4em; }
+
+div.img-wrapper {
+  position: relative; }
+  div.img-wrapper > div.img-label {
+    font-family: "Comic Sans MS";
+    font-size: 24px;
+    line-height: 1.1;
+    position: absolute;
+    width: 200px;
+    margin-left: -100px; }
+
+.enjoyment .enjoy-1 {
+  top: 280px;
+  left: 250px; }
+.enjoyment .enjoy-2 {
+  bottom: 30px;
+  left: 400px; }
+.enjoyment .enjoy-3 {
+  top: 100px;
+  left: 550px; }
+.enjoyment .enjoy-4 {
+  bottom: 50px;
+  left: 700px; }
+.enjoyment .enjoy-5 {
+  top: 100px;
+  right: -10px; }
+
+div.mario-walk {
+  height: 96px;
+  width: 48px;
+  background: url("../../images/mario-walk.gif") no-repeat scroll 0 0; }
+
+.preferred-method {
+  color: #228b22; }
