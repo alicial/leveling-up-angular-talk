@@ -129,16 +129,16 @@ angular.module('users').config(function($routeProvider) {
       <pre class="fragment"><code data-trim contenteditable>
 var Mario = function() {
   this.size = 'small';
-});
-Mario.prototype.eatMushroom() {
+};
+Mario.prototype.eatMushroom = function() {
   this.size = 'large';
-});
+};
 myModule.service('marioService', Mario); // calls new Mario()
               </code></pre>
       <pre class="fragment"><code data-trim contenteditable>
 myModule.factory('marioService', function() {
   var mario = {
-    size: 'small';
+    size: 'small'
   };
   return {
     eatMushroom: function() {
