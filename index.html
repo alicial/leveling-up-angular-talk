@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="css/reveal.min.css">
   <link rel="stylesheet" href="css/theme/sky.css" id="theme">
   <link rel="stylesheet" href="css/theme/mario.css">
+  <link rel="stylesheet" href="examples/css/mario.css">
 
   <!-- For syntax highlighting -->
   <link rel="stylesheet" href="lib/css/zenburn.css">
@@ -25,6 +26,10 @@
   <script>
     document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
   </script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular.min.js"></script>
+  <script src="examples/js/mario.js"></script>
 
   <!--[if lt IE 9]>
   <script src="lib/js/html5shiv.js"></script>
@@ -40,10 +45,10 @@
     <section data-background="images/1-1.png" data-background-size="auto 25%" data-background-position="0 bottom">
       <h1>Leveling Up</h1>
       <h2>in Angular</h2>
-      <a href="http://alicial.github.io/leveling-up-angular-talk">http://alicial.github.io/leveling-up-angular-talk</a>
+      <a href="http://alicialiu.net/leveling-up-angular-talk">http://alicialiu.net/leveling-up-angular-talk</a>
       <h3 style="font-weight: bold;"><a href="http://alicialiu.net">Alicia Liu</a></h3>
-      <p>Sr Software Engineer, <a href="http://lift.do">Lift</a></p>
-      <p><a href="http://twitter.com/aliciatweet">@aliciatweet</a></p>
+      <p><a href="https://twitter.com/aliciatweet">@aliciatweet</a></p>
+      <p>Sr Software Engineer, <a href="https://lift.do">Lift</a></p>
     </section>
     <section data-background="images/1-1.png" data-background-size="auto 25%" data-background-position="right bottom">
       <h3>Enjoyment of Angular</h3>
@@ -59,73 +64,65 @@
     <section class="dark" data-background-color="#000" data-background-image="images/1-2.png" data-background-size="auto 50%" data-background-position="right bottom">
       <img class="image fragment" src="images/mario-walk.gif">
     </section>
-    <section data-background="images/4-3.png" data-background-size="auto 25%" data-background-position="0 bottom">
-      <p>Angular sample code</p>
-      <pre><code data-trim contenteditable>
-// declare a module
-var myAppModule = angular.module('myApp', []);
-
-// configure the module
-myAppModule.config(
-//...
-);
-
-// Add a controller
-function Ctrl($scope) {
-//...
-}
-
-      </code></pre>
-      <p class="fragment">Global variables WTF?!</p>
-      <pre class="fragment"><code data-trim contenteditable>
-angular.module('myApp').config(
-//...
-);
-
-angular.module('myApp').controller('myController', function() {
-//...
-});
-      </code></pre>
+    <section data-background="images/4-3.png" data-background-size="auto 20%" data-background-position="50% bottom">
+      <h2>Module Organization</h2>
+      <img class="svg-module fragment" src="images/module1.svg">
+      <img class="svg-module fragment" src="images/module2.svg">
+      <img class="image fragment" src="images/goomba.png" style="position: absolute; right: 0.5em;">
     </section>
     <section data-background="images/4-3.png" data-background-size="auto 20%" data-background-position="50% bottom">
-      <h1>Modules</h1>
-      <div class="fragment" data-fragment-index="1">
-        <blockquote>
-          <h5>Recommended Setup <small><a target="_blank" href="http://docs.angularjs.org/guide/module">Angular Guide</a></small></h5>
-          <ul>
-            <li>A service module, for service declaration</li>
-            <li>A directive module, for directive declaration</li>
-            <li>A filter module, for filter declaration</li>
-            <li>And an application level module which depends on the above modules, and which has initialization code.</li>
-          </ul>
-          <img class="image fragment" src="images/goomba.png" data-fragment-index="2" style="position: absolute; right: 0.5em;">
-        </blockquote>
-      </div>
-    </section>
-    <section data-background="images/4-3.png" data-background-size="auto 25%" data-background-position="right bottom">
-      <h3>Modules By Feature</h3>
-      <pre class="fragment"><code data-trim contenteditable>
-angular.module('users', ['utilities']);
-angular.module('groups', ['utilities']);
-angular.module('mainApp', ['users', 'groups']);
-      </code></pre>
-      <pre class="fragment"><code data-trim>
-angular.module('adminApp', ['users']);
-           </code></pre>
-      <pre class="fragment"><code data-trim>
-angular.module('users').config(function($routeProvider) {
-    $routeProvider.when('/users/', ... ).
-        when('/users/:id', ... ).
-        // other /users/* routes
-});
-           </code></pre>
+      <h2>Module By Feature</h2>
+      <img class="svg-module fragment" src="images/module3.svg">
+      <img class="svg-module fragment" src="images/module4.svg">
       <p class="fragment">
         Supports asynchronous loading of modules in the future
-        <img class="image fragment" src="images/star.gif">
       </p>
+      <img class="image fragment" src="images/star.gif">
     </section>
     <section data-background="images/5-1.png" data-background-size="auto 25%" data-background-position="0 bottom">
       <h1>Services</h1>
+      <div class="fragment">
+      <table class=" table table-condensed">
+      <thead>
+      <tr>
+        <th>Features / Recipe type</th>
+        <th>Factory</th>
+        <th>Service</th>
+        <th>Provider</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>can have dependencies</td>
+        <td class="success">yes</td>
+        <td class="success">yes</td>
+        <td class="success">yes</td>
+      </tr>
+      <tr>
+        <td>uses type friendly injection</td>
+        <td class="error">no</td>
+        <td class="success">yes</td>
+        <td class="error">no</td>
+      </tr>
+      <tr>
+        <td>object available in config phase</td>
+        <td class="error">no</td>
+        <td class="error">no</td>
+        <td class="success">yes</td>
+      </tr>
+      <tr>
+        <td>can create functions/primitives</td>
+        <td class="success">yes</td>
+        <td class="error">no</td>
+        <td class="success">yes</td>
+      </tr>
+      </tbody>
+      </table>
+      <small><a href="http://docs.angularjs.org/guide/providers#conclusion">From Angular Developer Guide</a></small>
+      </div>
+    </section>
+    <section data-background="images/5-1.png" data-background-size="auto 25%" data-background-position="0 bottom">
+      <h3>Service vs Factory</h3>
       <pre class="fragment"><code data-trim contenteditable>
 var Mario = function() {
   this.size = 'small';
@@ -148,7 +145,7 @@ myModule.factory('marioService', function() {
 });
       </code></pre>
     </section>
-    <section data-background="images/5-1.png" data-background-size="auto 25%" data-background-position="0 bottom">
+    <section data-background="images/5-1.png" data-background-size="auto 50%" data-background-position="0 bottom">
       <h3>Provider</h3>
       <pre class="fragment"><code data-trim contenteditable>
 myModule.provider('marioService', function() {
@@ -226,7 +223,7 @@ myModule.config(function($routeProvider) {
       templateUrl: 'profile.html',
       controller: 'CharacterCtrl',
       resolve: {
-        Character: function($route, CharacterService) {
+        character: function($route, CharacterService) {
           // returns a promise
           return CharacterService.get($route.current.params.id);
         }
@@ -236,8 +233,8 @@ myModule.config(function($routeProvider) {
       </code></pre>
       <pre class="fragment" data-fragment-index="1"><code data-trim contenteditable>
 
-myModule.controller('CharacterCtrl', function($scope, Character) {
-  $scope.character = Character;
+myModule.controller('CharacterCtrl', function($scope, character) {
+  $scope.character = character;
 });
       </code></pre>
     </section>
@@ -255,19 +252,24 @@ myModule.controller('CharacterCtrl', function($scope, Character) {
       </ul>
     </section>
     <section class="dark" data-background-color="#000" data-background-image="images/8-4.png" data-background-size="auto 25%" data-background-position="0 bottom">
-      <h3>Example</h3>
-      <pre><code contenteditable>&lt;enemy enemy-type="{{enemy.type}}" lives="enemy.lives" on-destroy="destroy()"&gt;&lt;/enemy&gt;
+      <h3>Directive Example</h3>
+      <div id="example-directive" ng-controller="exampleCtrl" class="example-wrapper">
+        <enemy enemy-type="{{enemyType}}" lives="lives" on-destroy="destroy()"></enemy>
+        <label>Enemy Type: <input type="text" ng-model="enemyType"></label>
+      </div>
+      <pre><code contenteditable>&lt;enemy enemy-type="{{enemyType}}" lives="lives" on-destroy="destroy()"&gt;&lt;/enemy&gt;
       </code></pre>
       <pre class="fragment"><code data-trim contenteditable>
-directive('enemy', function() {
+angular.module('demo.characters').directive('enemy', function() {
     return {
         restrict: "E",
         scope: {
-          ...
+            type: "@enemyType",
+            currentLives: "=lives",
+            onDestroy: "&"
         },
-        link: function(scope, iElement, iAttrs) {
-            ...
-        }
+        template: "<div ng-class='{goomba: type == \"small\", bowser: type == \"big\"}'></div>",
+        replace: true
     };
 });
            </code></pre>
@@ -287,13 +289,6 @@ directive('enemy', function() {
         <li>false: use existing scope (default)</li>
         <li>true: new scope</li>
         <li class="fragment"><span class="preferred-method">object: isolated scope, e.g.</span>
-          <pre><code contenteditable>&lt;enemy enemy-type="{{enemy.type}}" lives="enemy.lives" on-destroy="destroy()"&gt;&lt;/enemy&gt;
-          </code></pre>
-          <pre><code contenteditable class="language-javascript">scope: {
-    type: "@enemyType",
-    currentLives: "=lives",
-    onDestroy: "&"
-}</code></pre>
           <ul>
             <li class="fragment" data-fragment-index="1">"@": pass as string, can be interpolated</li>
             <li class="fragment" data-fragment-index="2">"=": data bind this property</li>
@@ -303,86 +298,53 @@ directive('enemy', function() {
       </ul>
     </section>
     <section class="dark" data-background-color="#000" data-background-image="images/8-4.png" data-background-size="auto 25%" data-background-position="0 bottom">
-      <h3>$observe and $watch</h3>
+      <h3>$watch</h3>
+      <div id="example-watch" ng-controller="exampleCtrl" class="example-wrapper">
+        <enemy enemy-type="{{enemyType}}" lives="lives" on-destroy="destroy()"></enemy>
+        <label>Lives: <input type="number" ng-model="lives" min="0" max="10"></label>
+      </div>
       <pre class="fragment"><code data-trim contenteditable class="language-javascript">
-scope: {
-    type: "@enemyType",
-    currentLives: "=lives",
-    onDestroy: "&"
-},
 link: function(scope, iElement, iAttrs) {
-    iAttrs.$observe('enemyType', function(type) {
-        scope.type = type;
-    });
-
-    scope.$watch('lives', function(lives) {
-        scope.lives = lives || 1;
-    });
+ ...
+      scope.$watch("currentLives", function(newLives, oldLives) {
+            if (newLives > oldLives) {
+                $enemy.animate({width:"+=10px",height:"+=10px"},150).animate({width:"-=10px",height:"-=10px"},150);
+            } else if (newLives < oldLives) {
+                $enemy.animate({width:"-=10px",height:"-=10px"},150).animate({width:"+=10px",height:"+=10px"},150);
+            }
+        });
 ...
 }
       </code></pre>
     </section>
     <section class="dark" data-background-color="#000" data-background-image="images/8-4.png" data-background-size="auto 25%" data-background-position="0 bottom">
-          <h4>Communicating Between Directives</h4>
-    <pre class="fragment"><code contenteditable="">&lt;mario fire-mode="{{mario.mode}}"&gt;&lt;/mario&gt;</code></pre>
-    <pre class="fragment"><code data-trim contenteditable class="language-javascript">
-myModule.directive('mario', function() {
-    return {
-        restrict: "E",
-        scope: {
-            fireMode: "@"
-        }
-    }
-}).
-directive('fireMode', function() {
-    return {
-        restrict: "A",
-        link: function(scope, iElement, iAttrs) {
-            var $character = $(iElement[0]);
-            iAttrs.$observe('fireMode', function(mode) {
-                if (mode === "fire") {
-                    $character.addClass("fire-mode");
-                } else {
-                    $character.removeClass("fire-mode");
-                }
-            });
-        }
-    };
-})
-    </code></pre>
-    </section>
-    <section class="dark" data-background-color="#000" data-background-image="images/8-4.png" data-background-size="auto 25%" data-background-position="0 bottom">
-          <h3>Wrapping jQuery Events</h3>
-    <pre class="fragment"><code data-trim contenteditable class="language-javascript">
-if (mode === "fire") {
-    $(document).on('click.fireball', function(e) {
-        var $fireball = $("<div class='fire-ball'></div>");
-        var offset = $character.offset();
-        $fireball.css({top: offset.top + ($character.height()/2), left: offset.left + $character.width()});
-        $character.after($fireball);
-        $fireball.animate({top: e.pageY, left: e.pageX}, function() {
-            $fireball.remove();
-            $(e.target).trigger("attack");
-        });
+      <h3>Wrapping jQuery</h3>
+      <pre class="fragment"><code data-trim contenteditable class="language-javascript">
+// jQuery Land
+$(document).on('click.fireball', function(e) {
+    var $fireball = $("&lt;div class='fire-ball'&gt;&lt;/div&gt;");
+    var offset = $character.offset();
+    $fireball.css({top: offset.top + ($character.height()/2), left: offset.left + $character.width()});
+    $character.after($fireball);
+    $fireball.animate({top: e.pageY, left: e.pageX}, function() {
+        $fireball.remove();
+        $(e.target).trigger("attack");
     });
-} else {
-    $(document).off('click.fireball');
-}
-    </code></pre>
-    </section>
-    <section class="dark" data-background-color="#000" data-background-image="images/8-4.png" data-background-size="auto 25%" data-background-position="0 bottom">
-      <h3>Handling jQuery Events</h3>
+});
+      </code></pre>
 <pre class="fragment"><code data-trim contenteditable class="language-javascript">
+// in Angular directive
 link: function(scope, iElement, iAttrs) {
   var $enemy = $(iElement[0]);
 
   $enemy.on("attack", function(e) {
-      scope.currentLives--;
-      scope.$apply();
-      if (scope.currentLives === 0) {
-          $enemy.remove();
-          scope.onDestroy();
-      }
+      scope.$apply(function() {
+          scope.currentLives = scope.currentLives - 1;
+          if (scope.currentLives === 0) {
+              $enemy.remove();
+              scope.onDestroy();
+          }
+      });
   });
 }
 </code></pre>
@@ -394,7 +356,7 @@ link: function(scope, iElement, iAttrs) {
       <h1>The End<br>Thanks!</h1>
       <h3 style="font-weight: bold;"><a href="http://alicialiu.net">Alicia Liu</a></h3>
       <p><a href="http://twitter.com/aliciatweet">@aliciatweet</a></p>
-      <p><a href="http://alicial.github.io/leveling-up-angular-talk">http://alicial.github.io/leveling-up-angular-talk</a></p>
+      <p><a href="http://alicialiu.net/leveling-up-angular-talk">http://alicialiu.net/leveling-up-angular-talk</a></p>
       <p><br><br><small>Images adapted from <a href="http://mariowiki.com" target="_blank">Mario Wiki</a></small></p>
     </section>
     <section>
@@ -471,6 +433,63 @@ angular.module('myTemplates', [])
     }]);
         </code></pre>
     </section>
+      <section class="dark" data-background-color="#000" data-background-image="images/8-4.png" data-background-size="auto 25%" data-background-position="0 bottom">
+            <h4>Communicating Between Directives</h4>
+      <pre class="fragment"><code contenteditable="">&lt;mario fire-mode="{{mario.mode}}"&gt;&lt;/mario&gt;</code></pre>
+      <pre class="fragment"><code data-trim contenteditable class="language-javascript">
+  myModule.directive('mario', function() {
+      return {
+          restrict: "E",
+          scope: {
+              fireMode: "@"
+          }
+      }
+  }).
+  directive('fireMode', function() {
+      return {
+          restrict: "A",
+          link: function(scope, iElement, iAttrs) {
+              var $character = $(iElement[0]);
+              iAttrs.$observe('fireMode', function(mode) {
+                  if (mode === "fire") {
+                      $character.addClass("fire-mode");
+                  } else {
+                      $character.removeClass("fire-mode");
+                  }
+              });
+          }
+      };
+  })
+      </code></pre>
+      </section>
+      <section data-background="images/4-3.png" data-background-size="auto 25%" data-background-position="0 bottom">
+        <p>Angular sample code</p>
+        <pre><code data-trim contenteditable>
+  // declare a module
+  var myAppModule = angular.module('myApp', []);
+
+  // configure the module
+  myAppModule.config(
+  //...
+  );
+
+  // Add a controller
+  function Ctrl($scope) {
+  //...
+  }
+
+        </code></pre>
+        <p class="fragment">Global variables WTF?!</p>
+        <pre class="fragment"><code data-trim contenteditable>
+  angular.module('myApp').config(
+  //...
+  );
+
+  angular.module('myApp').controller('myController', function() {
+  //...
+  });
+        </code></pre>
+      </section>
     </section>
   </div>
 </div>
@@ -507,6 +526,11 @@ angular.module('myTemplates', [])
       document.getElementById("sound-pipe").play();
     }
   });
+
+  // bootstrap angular examples, as separate apps, so Angular doesn't try to interpolate random code samples, which can create errors
+  angular.bootstrap(document.getElementById("example-directive"), ['demo.examples']);
+  angular.bootstrap(document.getElementById("example-watch"), ['demo.examples']);
+
 </script>
 
 </body>

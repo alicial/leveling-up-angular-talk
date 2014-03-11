@@ -1,5 +1,5 @@
 "use strict";
-angular.module('marioApp', []).
+angular.module('demo.characters', []).
     directive('mario', function() {
         return {
             restrict: "E",
@@ -25,8 +25,9 @@ angular.module('marioApp', []).
                         $(document).on('click.fireball', function(e) {
                             var $fireball = $("<div class='fire-ball'></div>");
                             var offset = $character.offset();
-                            $fireball.css({top: offset.top, left: offset.left + $character.width()});
                             $character.after($fireball);
+                            $fireball.css({top: offset.top, left: offset.left + $character.width()});
+
                             $fireball.animate({top: e.pageY, left: e.pageX}, function() {
                                 $fireball.remove();
                                 $(e.target).trigger("attack");
@@ -50,13 +51,12 @@ angular.module('marioApp', []).
                 onDestroy: "&",
                 position: "@"
             },
+            template: "<div ng-class='{goomba: type == \"small\", bowser: type == \"big\"}'></div>",
+            replace: true,
             link: function(scope, iElement, iAttrs) {
-                iAttrs.$observe('enemyType', function(type) {
-                    scope.type = type;
-                });
-
                 var $enemy = $(iElement[0]);
-                $enemy.addClass(scope.type).css("left", scope.position + "%");
+
+                $enemy.css("left", scope.position + "%");
 
                 $enemy.on("attack", function(e) {
                     scope.$apply(function() {
@@ -67,9 +67,26 @@ angular.module('marioApp', []).
                         }
                     });
                 });
+
+                scope.$watch("currentLives", function(newLives, oldLives) {
+                    if (newLives > oldLives) {
+                        $enemy.animate({width:"+=10px",height:"+=10px"},150).animate({width:"-=10px",height:"-=10px"},150);
+                    } else if (newLives < oldLives) {
+                        $enemy.animate({width:"-=10px",height:"-=10px"},150).animate({width:"+=10px",height:"+=10px"},150);
+                    }
+                });
             }
         };
-    }).
+    });
+
+angular.module('demo.examples', ['demo.characters']).
+    controller('exampleCtrl', function($scope) {
+        $scope.enemyType = "small";
+        $scope.lives = 1;
+    });
+
+
+angular.module('demo.game', ['demo.characters']).
     controller('gameCtrl', function($scope) {
         $scope.mario = {
             mode: 'fire'
@@ -80,19 +97,18 @@ angular.module('marioApp', []).
         // create some goombas and a bowser
         for (var i=0; i<=2; i++) {
             $scope.enemies.push({
-                type: "goomba",
+                type: "small",
                 lives: 1
             });
         }
 
         var bowser = {
-            type: "bowser",
-            lives: 10
+            type: "big",
+            lives: 3
         };
         $scope.enemies.push(bowser);
 
         $scope.destroy = function(index) {
             $scope.enemies.splice(index, 1);
-            $scope.$apply();
         };
     });

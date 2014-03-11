@@ -2,11 +2,34 @@
 <html lang="en">
 <head>
   <link rel="stylesheet" href="css/mario.css" id="theme">
+  <style>
+    html {
+        height: 100%;
+        font-family: "Helvetica Neue", sans-serif;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        min-height: 100%;
+        background: lightblue url(../images/1-1.png) no-repeat scroll 0 bottom;
+        background-size: auto 864px;
+    }
+    h4 {
+        padding: 0;
+        margin: 0;
+    }
+  </style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-  <script src="js/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular.min.js"></script>
   <script src="js/mario.js"></script>
 </head>
-<body ng-app="marioApp">
+<body ng-app="demo.game">
 <div ng-controller="gameCtrl" class="game">
   <h4>  Mode: <input ng-model="mario.mode" type="text"></h4>
 <h4><span ng-show="enemies.length">Enemies left = {{enemies.length}}</span><span ng-hide="enemies.length">You are awesome!!</span></h4>
