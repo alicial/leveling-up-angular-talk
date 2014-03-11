@@ -195,15 +195,6 @@ deferred.reject(error); // if data doesn't load
 // in some controller
 svc.getMario().then( doStuffWithMario, displayError );
           </code></pre>
-<div class="fragment" data-fragment-index="3">
-  Promises in the View
-      <pre ><code data-trim contenteditable>
-// in some controller
-$scope.mario = marioService.getMario();
-
-// in a view
-{{mario.size}}
-        </code></pre></div>
     </section>
     <section class="dark" data-background-color="#003399" data-background-image="images/7-2.png" data-background-size="auto 25%" data-background-position="60% bottom">
       <h3>Using Promises</h3>
