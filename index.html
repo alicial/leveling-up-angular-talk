@@ -250,17 +250,18 @@ myModule.controller('CharacterCtrl', function($scope, character) {
       </div>
       <pre><code contenteditable>&lt;enemy enemy-type="{{enemyType}}" lives="lives" on-destroy="destroy()"&gt;&lt;/enemy&gt;
       </code></pre>
-      <pre class="fragment"><code data-trim contenteditable>
+      <pre class="fragment"><code data-trim contenteditable class="language-javascript">
 angular.module('demo.characters').directive('enemy', function() {
     return {
+        template: "<div ng-class='{goomba: type == \"small\", bowser: type == \"big\"}'></div>",
+        replace: true,
         restrict: "E",
         scope: {
             type: "@enemyType",
             currentLives: "=lives",
             onDestroy: "&"
         },
-        template: "<div ng-class='{goomba: type == \"small\", bowser: type == \"big\"}'></div>",
-        replace: true
+        link: function(scope, iElement, iAttrs) { ... }
     };
 });
            </code></pre>
@@ -280,6 +281,13 @@ angular.module('demo.characters').directive('enemy', function() {
         <li>false: use existing scope (default)</li>
         <li>true: new scope</li>
         <li class="fragment"><span class="preferred-method">object: isolated scope, e.g.</span>
+          <pre class="fragment"><code data-trim contenteditable class="language-javascript">
+scope: {
+    type: "@enemyType",
+    currentLives: "=lives",
+    onDestroy: "&"
+}
+          </code></pre>
           <ul>
             <li class="fragment" data-fragment-index="1">"@": pass as string, can be interpolated</li>
             <li class="fragment" data-fragment-index="2">"=": data bind this property</li>
@@ -289,14 +297,14 @@ angular.module('demo.characters').directive('enemy', function() {
       </ul>
     </section>
     <section class="dark" data-background-color="#000" data-background-image="images/8-4.png" data-background-size="auto 25%" data-background-position="0 bottom">
-      <h3>$watch</h3>
+      <h3>Link: Using $watch</h3>
       <div id="example-watch" ng-controller="exampleCtrl" class="example-wrapper">
         <enemy enemy-type="{{enemyType}}" lives="lives" on-destroy="destroy()"></enemy>
         <label>Lives: <input type="number" ng-model="lives" min="0" max="10"></label>
       </div>
       <pre class="fragment"><code data-trim contenteditable class="language-javascript">
 link: function(scope, iElement, iAttrs) {
- ...
+      var $enemy = $(iElement[0]);
       scope.$watch("currentLives", function(newLives, oldLives) {
             if (newLives > oldLives) {
                 $enemy.animate({width:"+=10px",height:"+=10px"},150).animate({width:"-=10px",height:"-=10px"},150);
@@ -304,12 +312,11 @@ link: function(scope, iElement, iAttrs) {
                 $enemy.animate({width:"-=10px",height:"-=10px"},150).animate({width:"+=10px",height:"+=10px"},150);
             }
         });
-...
 }
       </code></pre>
     </section>
     <section class="dark" data-background-color="#000" data-background-image="images/8-4.png" data-background-size="auto 25%" data-background-position="0 bottom">
-      <h3>Wrapping jQuery</h3>
+      <h3>Link: Handle jQuery Event</h3>
       <pre class="fragment"><code data-trim contenteditable class="language-javascript">
 // jQuery Land
 $(document).on('click.fireball', function(e) {
@@ -501,6 +508,9 @@ angular.module('myTemplates', [])
     theme: 'sky',
     transition: 'linear', // default/cube/page/concave/zoom/linear/fade/none
     backgroundTransition: 'slide',
+
+    width: 1280,
+    height: 720,
 
     // Optional libraries used to extend on reveal.js
     dependencies: [
