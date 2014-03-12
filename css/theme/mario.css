@@ -36,21 +36,23 @@ div.img-wrapper {
     width: 200px;
     margin-left: -100px; }
 
-.enjoyment .enjoy-1 {
-  top: 280px;
-  left: 250px; }
-.enjoyment .enjoy-2 {
-  bottom: 30px;
-  left: 400px; }
-.enjoyment .enjoy-3 {
-  top: 100px;
-  left: 550px; }
-.enjoyment .enjoy-4 {
-  bottom: 50px;
-  left: 700px; }
-.enjoyment .enjoy-5 {
-  top: 100px;
-  right: -10px; }
+.enjoyment {
+  position: relative; }
+  .enjoyment .enjoy-1 {
+    top: 55%;
+    left: 28%; }
+  .enjoyment .enjoy-2 {
+    bottom: 7%;
+    left: 40%; }
+  .enjoyment .enjoy-3 {
+    top: 20%;
+    left: 58%; }
+  .enjoyment .enjoy-4 {
+    bottom: 10%;
+    left: 75%; }
+  .enjoyment .enjoy-5 {
+    top: 10%;
+    right: 0; }
 
 div.mario-walk {
   height: 96px;

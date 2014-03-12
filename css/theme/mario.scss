@@ -51,25 +51,26 @@ div.img-wrapper {
   }
 }
 .enjoyment {
+  position: relative;
   .enjoy-1 {
-    top: 280px;
-    left: 250px;
+    top: 55%;
+    left: 28%;
   }
   .enjoy-2 {
-    bottom: 30px;
-    left: 400px;
+    bottom: 7%;
+    left: 40%;
   }
   .enjoy-3 {
-    top: 100px;
-    left: 550px;
+    top: 20%;
+    left: 58%;
   }
   .enjoy-4 {
-    bottom: 50px;
-    left: 700px;
+    bottom: 10%;
+    left: 75%;
   }
   .enjoy-5 {
-    top: 100px;
-    right: -10px;
+    top: 10%;
+    right: 0;
   }
 }
 div.mario-walk {
