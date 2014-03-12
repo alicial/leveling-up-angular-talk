@@ -2,6 +2,9 @@
     width: 100%;
     min-height: 300px;
 }
+.controls {
+    padding: 20px;
+}
 .goomba {
     display: block;
     position: absolute;
@@ -84,4 +87,112 @@
      -ms-transform: translate(40px, 0);
      transform: translate(40px, 0);
   }
+}
+
+
+h1.awesome {
+  font-size: 50px;
+  position: absolute;
+  width: 500px;
+  left: 50%;
+  top: 40%;
+  margin-left: -250px;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 1);
+  -webkit-animation: colorRotate 6s linear 0s infinite;
+  -moz-animation: colorRotate 6s linear 0s infinite;
+  -o-animation: colorRotate 6s linear 0s infinite;
+  animation: colorRotate 6s linear 0s infinite;
+}
+
+@-webkit-keyframes colorRotate {
+    from {
+        color: rgb(255, 0, 0);
+    }
+    16.6% {
+        color: rgb(255, 0, 255);
+    }
+    33.3% {
+        color: rgb(0, 0, 255);
+    }
+    50% {
+        color: rgb(0, 255, 255);
+    }
+    66.6% {
+        color: rgb(0, 255, 0);
+    }
+    83.3% {
+        color: rgb(255, 255, 0);
+    }
+    to {
+        color: rgb(255, 0, 0);
+    }
+}
+@-moz-keyframes colorRotate {
+    from {
+        color: rgb(255, 0, 0);
+    }
+    16.6% {
+        color: rgb(255, 0, 255);
+    }
+    33.3% {
+        color: rgb(0, 0, 255);
+    }
+    50% {
+        color: rgb(0, 255, 255);
+    }
+    66.6% {
+        color: rgb(0, 255, 0);
+    }
+    83.3% {
+        color: rgb(255, 255, 0);
+    }
+    to {
+        color: rgb(255, 0, 0);
+    }
+}
+@-o-keyframes colorRotate {
+    from {
+        color: rgb(255, 0, 0);
+    }
+    16.6% {
+        color: rgb(255, 0, 255);
+    }
+    33.3% {
+        color: rgb(0, 0, 255);
+    }
+    50% {
+        color: rgb(0, 255, 255);
+    }
+    66.6% {
+        color: rgb(0, 255, 0);
+    }
+    83.3% {
+        color: rgb(255, 255, 0);
+    }
+    to {
+        color: rgb(255, 0, 0);
+    }
+}
+@keyframes colorRotate {
+    from {
+        color: rgb(255, 0, 0);
+    }
+    16.6% {
+        color: rgb(255, 0, 255);
+    }
+    33.3% {
+        color: rgb(0, 0, 255);
+    }
+    50% {
+        color: rgb(0, 255, 255);
+    }
+    66.6% {
+        color: rgb(0, 255, 0);
+    }
+    83.3% {
+        color: rgb(255, 255, 0);
+    }
+    to {
+        color: rgb(255, 0, 0);
+    }
 }

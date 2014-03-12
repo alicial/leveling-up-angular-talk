@@ -104,7 +104,7 @@ angular.module('demo.game', ['demo.characters']).
 
         var bowser = {
             type: "big",
-            lives: 3
+            lives: 5
         };
         $scope.enemies.push(bowser);
 
